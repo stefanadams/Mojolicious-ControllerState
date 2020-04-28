@@ -1,0 +1,22 @@
+language: perl
+perl:
+  - "5.28"
+  - "5.26"
+  - "5.24"
+  - "5.22"
+env:
+  global:
+    - HARNESS_OPTIONS=j9
+    - TEST_EV=1
+    - TEST_POD=1
+    - TEST_SOCKS=1
+    - TEST_SUBPROCESS=1
+    - TEST_UNIX=1
+    - TEST_TLS=1
+install:
+  - cpanm -n Test::Pod Test::Pod::Coverage
+  - cpanm -n Mojolicious
+  - cpanm -n --installdeps .
+sudo: false
+notifications:
+  email: false
